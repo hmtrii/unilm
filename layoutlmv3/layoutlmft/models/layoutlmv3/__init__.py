@@ -13,7 +13,7 @@ from .tokenization_layoutlmv3 import Publaynet_LayoutLMv3Tokenizer
 from .tokenization_layoutlmv3_fast import Publaynet_LayoutLMv3TokenizerFast
 
 
-AutoConfig.register("[publaynet_layoutlmv3", Publaynet_LayoutLMv3Config)
+AutoConfig.register("publaynet_layoutlmv3", Publaynet_LayoutLMv3Config)
 AutoModel.register(Publaynet_LayoutLMv3Config, Publaynet_LayoutLMv3Model)
 AutoModelForTokenClassification.register(Publaynet_LayoutLMv3Config, LayoutLMv3ForTokenClassification)
 AutoModelForQuestionAnswering.register(Publaynet_LayoutLMv3Config, LayoutLMv3ForQuestionAnswering)

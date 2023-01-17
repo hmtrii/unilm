@@ -13,7 +13,7 @@ LAYOUTLMV3_PRETRAINED_CONFIG_ARCHIVE_MAP = {
 
 
 class Publaynet_LayoutLMv3Config(BertConfig):
-    model_type = "layoutlmv3"
+    model_type = "publaynet_layoutlmv3"
 
     def __init__(
         self,

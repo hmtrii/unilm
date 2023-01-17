@@ -40,7 +40,7 @@ from transformers.models.roberta.modeling_roberta import (
 )
 from transformers.utils import logging
 
-from .configuration_layoutlmv3 import LayoutLMv3Config
+from .configuration_layoutlmv3 import Publaynet_LayoutLMv3Config
 from timm.models.layers import to_2tuple
 
 
@@ -209,7 +209,7 @@ class LayoutLMv3PreTrainedModel(PreTrainedModel):
     models.
     """
 
-    config_class = LayoutLMv3Config
+    config_class = Publaynet_LayoutLMv3Config
     base_model_prefix = "layoutlmv3"
 
     # Copied from transformers.models.bert.modeling_bert.BertPreTrainedModel._init_weights
@@ -696,7 +696,7 @@ class LayoutLMv3Encoder(nn.Module):
         )
 
 
-class LayoutLMv3Model(LayoutLMv3PreTrainedModel):
+class Publaynet_LayoutLMv3Model(LayoutLMv3PreTrainedModel):
     """
     """
 
@@ -1020,7 +1020,7 @@ class LayoutLMv3ForTokenClassification(LayoutLMv3PreTrainedModel):
         super().__init__(config)
         self.num_labels = config.num_labels
 
-        self.layoutlmv3 = LayoutLMv3Model(config)
+        self.layoutlmv3 = Publaynet_LayoutLMv3Model(config)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         if config.num_labels < 10:
             self.classifier = nn.Linear(config.hidden_size, config.num_labels)
@@ -1106,7 +1106,7 @@ class LayoutLMv3ForQuestionAnswering(LayoutLMv3PreTrainedModel):
         super().__init__(config)
         self.num_labels = config.num_labels
 
-        self.layoutlmv3 = LayoutLMv3Model(config)
+        self.layoutlmv3 = Publaynet_LayoutLMv3Model(config)
         # self.qa_outputs = nn.Linear(config.hidden_size, config.num_labels)
         self.qa_outputs = LayoutLMv3ClassificationHead(config, pool_feature=False)
 
@@ -1200,7 +1200,7 @@ class LayoutLMv3ForSequenceClassification(LayoutLMv3PreTrainedModel):
         super().__init__(config)
         self.num_labels = config.num_labels
         self.config = config
-        self.layoutlmv3 = LayoutLMv3Model(config)
+        self.layoutlmv3 = Publaynet_LayoutLMv3Model(config)
         self.classifier = LayoutLMv3ClassificationHead(config, pool_feature=False)
 
         self.init_weights()
